@@ -6,7 +6,7 @@ typedef long long ll;
 typedef long double ld;
 ll n,m,k,q,t,g,l,r;
 const int prime=1e9+7;
-
+// verification here : https://codeforces.com/edu/course/2/lesson/4/1/practice/contest/273169/problem/A
 class SegmentTree{
 	private: 
 		int n;
