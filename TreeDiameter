@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define fastInp cin.tie(0); cout.tie(0); ios_base::sync_with_stdio(0);
+const int nax=2e5+5;
+vector<int> adj[nax];
+int n;
+
+int nodeFurthest=-1;
+int furthest=-1;
+void dfs(int node,int parent,int level){
+	
+	if(level>=furthest){
+		nodeFurthest=node;
+		furthest=level;
+	}
+	
+	for(int i=0;i<adj[node].size();i++){
+		if(adj[node][i]!=parent){
+			dfs(adj[node][i],node,level+1);
+		}
+	}
+}
+void solve(){
+	cin >> n ;
+	int from,to;
+	for(int i=0;i<n-1;i++){
+		cin >> from >> to;
+		adj[from].push_back(to);
+		adj[to].push_back(from);
+	}
+	
+	dfs(from,-1,0);
+	
+	dfs(nodeFurthest,-1,0);
+	
+	cout << furthest << "\n";
+
+	
+}
+int main() {
+	fastInp;
+	//freopen("mootube.in", "r", stdin);
+	//freopen("mootube.out", "w", stdout);
+	//int tc;
+	//cin >> tc;
+	//int i=1;
+	//while(tc--){
+		//cout << "Case #"<<i<<": " ;
+		solve();
+		//i++;
+	//}
+	
+}
