@@ -46,3 +46,18 @@ void inverses(long long p) {
 long long choose(long long n, long long r, long long p) {
 	return fac[n] * inv[r] % p * inv[n - r] % p;
 }
+
+
+/** dearrangement is giving n points , how many permutations where there is no pi=i !  */
+
+vector<ll> dp(MAXN+1,0);
+
+void dearrang(){
+	// dp[i]=(i-1)*(dp[i-2]+dp[i-1])
+	dp[0]=1;
+	dp[1]=0;
+
+	for(int i=2;i<=MAXN;i++){
+		dp[i]=(i-1)*dp[i-2]+(i-1)*dp[i-1];
+	}
+}
