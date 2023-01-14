@@ -1,6 +1,13 @@
 const int MAXN = 1e6;
 
 long long fac[MAXN + 1], inv[MAXN + 1];
+	
+/** the prob here is when we use division with mod, it does not work correctly!
+ * or when we divide x by y, it's like we multiply x with the inverse of y 
+ * and we know that multiplation with mod works without any modification
+ * so we get the inverse of y (in the mod p) with a Fermat's Little Theorem
+ * and we do it all like we are using the multiplication
+	
 		
 /** Computes x^y modulo p in O(log p) time. */
 long long exp(long long x, long long y, long long p) {
