@@ -58,7 +58,7 @@ const ll prime=1e9+7;
 const ll prime2=998244353;
 const int nax=2e5;
 /**
- * Credits goes to : https://www.youtube.com/watch?v=QeJ6sPc5Ufo
+ * Credit goes to : https://www.youtube.com/watch?v=QeJ6sPc5Ufo
  * O(nlog(n)) 
  * Problem solved here: 
  * Given a tree with n nodes rooted at node 1
