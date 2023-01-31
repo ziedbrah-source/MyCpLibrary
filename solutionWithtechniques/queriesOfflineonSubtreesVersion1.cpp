@@ -56,94 +56,9 @@ typedef long double ld;
 ll n,m,g,d,c;
 const ll prime=1e9+7;
 const ll prime2=998244353;
-const int nax=2e5;
-/**
- * Credit goes to : https://www.youtube.com/watch?v=QeJ6sPc5Ufo
- * O(nlog(n)) 
- * Problem solved here: 
- * Given a tree with n nodes rooted at node 1
- * each node i in the tree have a value a[i].
- * You are given q queries:
- * for each queries you are given 2 values u and k
- * you need to print the number of nodes in the subtree of u which have value k.
- * 
- * Offline queries (first time for me )
- *  INPUT TEST 
- *5
- *1 2 2 3 3
- *1 2
- *1 5
- *2 3
- *2 4
- *3
- *1 3
- *1 1
- *2 2
- **/
-vector<int> adj[nax];
-vector<int> queries[nax];
-int ans[nax];
-int k[nax];
-int id[nax];
-map<int,int> freq[nax];
-vector<int> vals(nax,0);
-void mrg(int par,int node){
-	if(freq[id[par]]<freq[id[node]]){
-		swap(id[par],id[node]);
-	}
-	
-	for(auto p:freq[id[node]]){
-		freq[id[par]][p.first]+=p.second;
-	}
-}
-void dfs(int node,int p){
-	freq[id[node]][vals[node]]=1;
-	
-	for(auto no:adj[node]){
-		if(no==p) continue;
-		dfs(no,node);
-		mrg(node,no);
-	}
-	
-	for(auto i:queries[node]){
-		ans[i]=freq[id[node]][k[i]];
-	}
-	
-	
-}
+
 void solve(){
 
-	cin >> n;
-	for(int i=0;i<n;i++){
-		cin >> vals[i];
-		id[i]=i;
-	}
-	for(int i=0;i<n-1;i++){
-		int from,to;
-		cin >> from >> to;
-		from--;
-		to--;
-		adj[from].push_back(to);
-		adj[to].push_back(from);	
-	}
-	ll q;
-	cin >> q;
-	for(int i=0;i<q;i++){
-		int node, val;
-		cin >> node >> val;
-		node--;
-		queries[node].push_back(i);
-		k[i]=val;
-	}
-	
-	dfs(0,-1);
-	
-	
-	for(int i=0;i<q;i++){
-		cout << ans[i] << " " ;
-	}
-	cout <<"\n";
-	
 	
 	
 	
