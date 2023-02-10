@@ -1,5 +1,3 @@
-using ll = long long;
-
 class HashedString {
   private:
 	// change M and B if you want
@@ -35,12 +33,5 @@ class HashedString {
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 vector<ll> HashedString::pow = {1};
 const ll HashedString::B = uniform_int_distribution<ll>(0, M - 1)(rng);
-/** USAGE
- * HashedString hs(h);
- * hs.getHash(i + 1 - n.size(), i)
- * it helps you check equality between two substrings
- * it helps you also to limit the memory needed in the storage in sets
- * like this problem : https://dmoj.ca/problem/ccc20s3
- * I used the hash in a set because I got an MLE when I insert whole string :)
- * GLHF!
- */
+HashedString hs(h);
+hs.getHash(i + 1 - n.size(), i);
