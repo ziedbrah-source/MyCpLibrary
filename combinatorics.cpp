@@ -1,50 +1,60 @@
-const int MAXN = 1e6;
+#include <iostream>
+using namespace std;
+using ll = long long;
 
-long long fac[MAXN + 1], inv[MAXN + 1];
-	
-/** the prob here is when we use division with mod, it does not work correctly!
- * or when we divide x by y, it's like we multiply x with the inverse of y 
- * and we know that multiplation with mod works without any modification
- * so we get the inverse of y (in the mod p) with a Fermat's Little Theorem
- * and we do it all like we are using the multiplication
-	
-		
-/** Computes x^y modulo p in O(log p) time. */
-long long exp(long long x, long long y, long long p) {
-	long long res = 1; x %= p;
+const int MAXN = 1e6;
+const int MOD = 1e9 + 7;
+
+ll fac[MAXN + 1];
+ll inv[MAXN + 1];
+
+ll exp(ll x, ll y, ll p) {
+	ll res = 1; x %= p;
 	while (y) {
 		if (y & 1) {
 			res *= x; res %= p; 
 		}
-		x *= x; x %= p;
+		x *= x;
+		x %= p;
 		y >>= 1;
 	}
 	return res;
 }
 
-/** Precomputes n! from 0 to MAXN. */
-void factorial(long long p) {
+void factorial() {
 	fac[0] = 1;
 	for (int i = 1; i <= MAXN; i++) {
-		fac[i] = fac[i - 1] * i % p;
+		fac[i] = fac[i - 1] * i % MOD;
 	}
 }
 
-/** Precomputes all modular inverse factorials from 0 to MAXN in O(n + log p) time */
-/** we use the fact that inv(n!)=inv(n!)*(inv(n+1)*n+1)=inv((n+1)!)*n+1 
- * (we use this because computing inverse factorias 
- * online can be costly (if we add log every time.. why not once right? :p)
- * */
-void inverses(long long p) {
-	inv[MAXN] = exp(fac[MAXN], p - 2, p);
+void inverses() {
+	inv[MAXN] = exp(fac[MAXN], MOD - 2, MOD);
 	for (int i = MAXN; i >= 1; i--) {
-		inv[i - 1] = inv[i] * i % p;
+		inv[i - 1] = inv[i] * i % MOD;
 	}
 }
-		
-/** Computes nCr mod p */
-long long choose(long long n, long long r, long long p) {
-	return fac[n] * inv[r] % p * inv[n - r] % p;
+
+ll choose(int n, int r) {
+	return fac[n] * inv[r] % MOD * inv[n - r] % MOD;
+}
+
+// another inverse :
+// complexity between log(m) and O(n(1/3))
+int inv(int i) {
+  return i <= 1 ? i : m - (long long)(m/i) * inv(m % i) % m;
+}
+
+int main() {
+	factorial();
+	inverses();
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		int a, b;
+		cin >> a >> b;
+		cout << choose(a, b) << '\n';
+	}
 }
 
 
