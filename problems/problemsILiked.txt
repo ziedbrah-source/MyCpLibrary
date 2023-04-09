@@ -1,0 +1,4 @@
+problem 1 : https://codeforces.com/contest/1801/problem/A 
+	description of the solution : great usage of the xor properties :)
+
+
