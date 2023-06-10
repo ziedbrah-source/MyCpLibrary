@@ -60,7 +60,7 @@ class SegmentTree{
 void solve(){
 	cin >> n >> m;
 	int tempn=n;
-	while(__builtin_popcount(n)!=1) n++;
+
 	vector<ll> vec(n);
 	for(int i=0;i<tempn;i++) cin >> vec[i];
 	SegmentTree st(vec);
