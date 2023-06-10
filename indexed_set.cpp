@@ -14,6 +14,13 @@ find_by_order(k): similar to find, returns the iterator corresponding to the k-t
 you can use it fa3udh matesta3mel segment tree ya bro :) :) :) :) it's not faster than segment tree
 but it's just double so no big deal .
 */
+/*
+typedef pair<int,int> pii;
+template <class T>
+using Tree =
+    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+Tree<pii> o;
+*/
 void solve(){
 ordered_set X;
     X.insert(1);
