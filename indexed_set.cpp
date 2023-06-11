@@ -39,6 +39,9 @@ ordered_set X;
     cout<<X.order_of_key(3)<<endl;   // 2
     cout<<X.order_of_key(4)<<endl;   // 2
     cout<<X.order_of_key(400)<<endl; // 5
+    
+    int pos = *x.find_by_order(ind);
+	x.erase(pos); boom :)
 	
 }
 	
