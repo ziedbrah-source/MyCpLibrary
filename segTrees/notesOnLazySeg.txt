@@ -1,0 +1,2 @@
+so the LAZY in the seg tree lakthareya howa ye7ki generalement ala element we7ed (yaani kol element zaa3ma 9adeh wala haja jetou men teli bech tepropagihelou baad okay ? okay sir)
+and the other fileds are fields that you will maintain some stuff in.
