@@ -90,14 +90,14 @@ void solve(){
 		int from,to;
 		from=left[i];
 		to=right[i];
-		/*for(int j=from;j<=to;j++){
+		/*for(int j=from;j<=to;j++){ // O(n^2) 
 			if(j==0){
 				dp[i]=min(dp[i],dp[j]+pref[i]);
 			}else{
 				dp[i]=min(dp[i],dp[j]+pref[i]-pref[j-1]);
 			}
 		}*/
-		dp[i]=pref[i]+st.RSQ(from,to);
+		dp[i]=pref[i]+st.RSQ(from,to); // O(nlog(n)) :p 
 		st.update(i,dp[i]-pref[i-1]);
 		
 
