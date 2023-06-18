@@ -1,0 +1,8 @@
+TLDR;
+to use this method, 
+first: you need that you are looping through values behind you to get the optimal value
+ /// so we are just making that loop faster
+
+second : you need to work the formula in order to isolate what is dependent on you and what is dependent on the state at that index behind you. and you need to insert that combinaison that only depend on the state in a seg tree and after that you just query :)
+
+###EZPZ
