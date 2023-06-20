@@ -1,0 +1,7 @@
+cho melekhr pesistent seg tree t3awnek bech tbinary searchi ala range :)
+
+example of problems: 
+- find how many numbers less than X or more than X in a range
+
+- find the kth biggest number in a range: how to do it :
+so basically that number has n-k-1 numbers below it. but we know how to know how many numbers less than X in this range right? (ken X andou a9al men n-k-1 tahtou -> lezemna ntal3ou kenou andou akther lezemna ntay7ou --> binary search on it too.)
