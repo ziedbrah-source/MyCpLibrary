@@ -41,6 +41,7 @@ ll choose(int n, int r) {
 
 // another inverse :
 // complexity between log(m) and O(n(1/3))
+// mech dima tkharej shiha aucune idée aleh. use it if you really need it .
 int inv(int i) {
   return i <= 1 ? i : m - (long long)(m/i) * inv(m % i) % m;
 }
@@ -72,98 +73,36 @@ void dearrang(){
 	}
 }
 
-/** miller rabin primality test: 
- * // C++ program Miller-Rabin primality test
-#include <bits/stdc++.h>
-using namespace std;
+// binomial and DP:
+/** Computes nCk mod p using dynamic programming */
+int binomial(int n, int k, int p) {
+	// dp[i][j] stores iCj
+	vector<vector<int>> dp(n + 1, vector<int>(k + 1, 0));
 
-// Utility function to do modular exponentiation.
-// It returns (x^y) % p
-int power(int x, unsigned int y, int p)
-{
-	int res = 1;	 // Initialize result
-	x = x % p; // Update x if it is more than or
-				// equal to p
-	while (y > 0)
-	{
-		// If y is odd, multiply x with result
-		if (y & 1)
-			res = (res*x) % p;
-
-		// y must be even now
-		y = y>>1; // y = y/2
-		x = (x*x) % p;
-	}
-	return res;
-}
-
-// This function is called for all k trials. It returns
-// false if n is composite and returns true if n is
-// probably prime.
-// d is an odd number such that d*2 = n-1
-// for some r >= 1
-bool miillerTest(int d, int n)
-{
-	// Pick a random number in [2..n-2]
-	// Corner cases make sure that n > 4
-	int a = 2 + rand() % (n - 4);
-
-	// Compute a^d % n
-	int x = power(a, d, n);
-
-	if (x == 1 || x == n-1)
-	return true;
-
-	// Keep squaring x while one of the following doesn't
-	// happen
-	// (i) d does not reach n-1
-	// (ii) (x^2) % n is not 1
-	// (iii) (x^2) % n is not n-1
-	while (d != n-1)
-	{
-		x = (x * x) % n;
-		d *= 2;
-
-		if (x == 1)	 return false;
-		if (x == n-1) return true;
+	// base cases described above
+	for (int i = 0; i <= n; i++) {
+		/*
+		 * i choose 0 is always 1 since there is exactly one way
+		 * to choose 0 elements from a set of i elements
+		 * (don't choose anything)
+		 */
+		dp[i][0] = 1;
+		/*
+		 * i choose i is always 1 since there is exactly one way
+		 * to choose i elements from a set of i elements
+		 * (choose every element in the set)
+		 */
+		if (i <= k) { dp[i][i] = 1; }
 	}
 
-	// Return composite
-	return false;
+	for (int i = 0; i <= n; i++) {
+		for (int j = 1; j <= min(i, k); j++) {
+			if (i != j) {  // skips over the base cases
+				// uses the recurrence relation above
+				dp[i][j] = (dp[i - 1][j - 1] + dp[i - 1][j]) % p;
+			}
+		}
+	}
+
+	return dp[n][k];  // returns nCk modulo p
 }
-
-// It returns false if n is composite and returns true if n
-// is probably prime. k is an input parameter that determines
-// accuracy level. Higher value of k indicates more accuracy.
-bool isPrime(int n, int k)
-{
-	// Corner cases
-	if (n <= 1 || n == 4) return false;
-	if (n <= 3) return true;
-
-	// Find r such that n = 2^d * r + 1 for some r >= 1
-	int d = n - 1;
-	while (d % 2 == 0)
-		d /= 2;
-
-	// Iterate given number of 'k' times
-	for (int i = 0; i < k; i++)
-		if (!miillerTest(d, n))
-			return false;
-
-	return true;
-}
-
-// Driver program
-int main()
-{
-	int k = 4; // Number of iterations
-
-	cout << "All primes smaller than 100: \n";
-	for (int n = 1; n < 100; n++)
-	if (isPrime(n, k))
-		cout << n << " ";
-
-	return 0;
-}
-**/
