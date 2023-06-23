@@ -1,0 +1,8 @@
+you think of this method when you have queries (or youjust want to answer a question)
+on a subtree of some X
+
+or you can make the formula independant F[x]=F[y] with y is in the subtree of X 
+then you can use this. 
+
+basically you dfs et apres yabda andek el ma3loumet el kol and you answer the questin ez pz 
+O(nlog(n)) (we can add a log for the data structures.);
