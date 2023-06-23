@@ -59,15 +59,6 @@ void floodFill(int x,int y){
 	floodFill(x,y+1);
 	floodFill(x,y-1);
 }
-1
-ICPC
-
-
-1
-ACMA
-APCA
-TOGI
-NEST
 void solve(){
 	cin >> n >>m;
 	for(int i=0;i<n;i++){
