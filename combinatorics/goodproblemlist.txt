@@ -1,0 +1,1 @@
+1) https://codeforces.com/contest/553/problem/A (uses bars and stars approach + recurrence formula);
