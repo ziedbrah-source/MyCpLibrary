@@ -1,4 +1,4 @@
 problem 1 : https://codeforces.com/contest/1801/problem/A 
 	description of the solution : great usage of the xor properties :)
 
-
+problem 2: https://atcoder.jp/contests/arc164/tasks/arc164_c game theory thing is good :)
