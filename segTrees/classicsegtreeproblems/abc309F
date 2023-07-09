@@ -1,0 +1,152 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define fastInp cin.tie(0); cout.tie(0); ios_base::sync_with_stdio(0);
+
+typedef long long ll;
+typedef long double ld;
+ll n,q,d;
+
+ll INF=2e18;
+// great segment tree problem : https://atcoder.jp/contests/abc309/tasks/abc309_f
+// F problem in ABC309
+
+unordered_map<int,int> valtoindex;
+set<int> s;
+class SegmentTree{
+	private: 
+		int n;
+		vector<ll> A,st;
+	
+	int l(int p) {return p<<1;}
+	int r(int p) {return (p<<1)+1;}
+	
+	void build(int p,int L,int R){
+		if(L==R){
+			st[p]=A[L];
+		}else{
+			int mid=(R+L)/2;
+			build(l(p),L,mid);
+			build(r(p),mid+1,R);
+			st[p]=min(st[l(p)],st[r(p)]);
+		}
+	}
+	void update(int p,int L,int R,int val, int X){
+		if(X==R&&L==X){
+			st[p]=val;
+			return;
+		}
+		if(R<X || L>X) return;
+		int mid=(R+L)/2;
+		update(l(p),L,mid,val,X);
+		update(r(p),mid+1,R,val,X);
+		st[p]=min(st[l(p)],st[r(p)]);
+	}
+	ll RSQ(int p,int L,int R,int LX,int RX){
+		if(LX<=L&&R<=RX) return st[p];
+		if(R<LX || L>RX) return INF;
+		ll currVal=min(RSQ(l(p),L,(L+R)/2,LX,RX),RSQ(r(p),(L+R)/2 +1 ,R,LX,RX));
+		return currVal;
+	}
+	public:
+		SegmentTree(int sz) : n(sz), st(4*n) {}
+		SegmentTree(const vector<ll> &initialA): SegmentTree((int)initialA.size()){
+			A=initialA;
+			build(1,0,n-1);
+		}
+		void update(int X,int val){
+			update(1,0,n-1,val,X);
+		}
+		ll RSQ(int LX,int RX){
+			return RSQ(1,0,n-1,LX,RX);
+		}
+		
+	
+};
+void solve(){
+
+	cin >> n;
+	vector<vector<int>> vec(n);
+	for(int i=0;i<n;i++){
+		for(int j=0;j<3;j++){
+			int val;
+			cin >> val;
+			s.insert(val);
+			vec[i].push_back(val);
+			sort(vec[i].begin(),vec[i].end());
+		}
+	}
+	int ind=0;
+	for(auto el:s){
+		valtoindex[el]=ind;
+		ind++;
+	}
+	for(int i=0;i<n;i++){
+		for(int j=0;j<3;j++){
+			vec[i][j]=valtoindex[vec[i][j]];
+		}
+	}
+	sort(vec.begin(),vec.end(),[](vector<int>& a,vector<int>& b){
+		return a[0]<b[0];
+	});
+
+	vector<ll>A(ind+10,INF);
+
+	SegmentTree st(A);
+	queue<int> indices;
+	for(int i=0;i<n;i++){
+
+		vector<int>& vv=vec[i];
+		ll vmin=st.RSQ(0,vv[1]-1);
+		if(vmin<vv[2]){
+			cout <<"Yes"<<"\n";
+			return;
+		}
+		indices.push(i);
+		if(i+1<=n-1){
+			if(vec[i][0]==vec[i+1][0]){
+				
+
+
+			}else{
+				ll vmin;
+				while(!indices.empty()){
+					int nd=indices.front();
+					indices.pop();
+					vector<int>& vvvvv=vec[nd];
+					vmin=st.RSQ(vvvvv[1],vvvvv[1]);
+					if(vmin>vvvvv[2]){
+						st.update(vvvvv[1],vvvvv[2]);
+					}
+				}
+
+			}
+		}
+
+	}
+	cout << "No"<<"\n";
+
+	
+
+}
+	
+	
+
+ 
+int main() {
+	fastInp;
+
+	int tc=1;
+
+	while(tc--){
+		//i++;
+		//cout <<"Test " << i << ":" << "\n";
+		
+		solve();
+		
+	}
+
+	return 0;
+}
+
+
+
