@@ -2,3 +2,8 @@ problem 1 : https://codeforces.com/contest/1801/problem/A
 	description of the solution : great usage of the xor properties :)
 
 problem 2: https://atcoder.jp/contests/arc164/tasks/arc164_c game theory thing is good :)
+
+problem 3: https://codeforces.com/contest/1848/problem/C (full math and gcd like stuff)
+
+
+problem4 : https://codeforces.com/contest/1853/problem/C (GREAT MATH PROBLEM THAT I COULD NOT SOLVE DURING THE CONTEST) 
