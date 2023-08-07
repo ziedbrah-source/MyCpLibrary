@@ -9,3 +9,6 @@ problem 3: https://codeforces.com/contest/1848/problem/C (full math and gcd like
 problem4 : https://codeforces.com/contest/1853/problem/C (GREAT MATH PROBLEM THAT I COULD NOT SOLVE DURING THE CONTEST) 
 
 problem5 : https://codeforces.com/contest/1854/problem/A2 (nice observations and constructive)
+
+
+problem6 : https://codeforces.com/contest/1857/problem/F (solving a quadratic equation  :) )
