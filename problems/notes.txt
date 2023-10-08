@@ -1,0 +1,2 @@
+1) Fermat's polygonal number theorem states that every positive integer can be written as the sum of at most n n-gon numbers. This implies that a positive integer can be written as the sum of at most 3 triangular numbers, 4 square numbers, and so on. (yaani ken andek n tnejem tektbou b at most 3  mel 3-gon weli houma fel mandher hedha : v*(v+1) ):
+used in this problem: https://atcoder.jp/contests/arc129/tasks/arc129_c
