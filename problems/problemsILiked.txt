@@ -12,3 +12,7 @@ problem5 : https://codeforces.com/contest/1854/problem/A2 (nice observations and
 
 
 problem6 : https://codeforces.com/contest/1857/problem/F (solving a quadratic equation  :) )
+
+
+
+problem 7: https://atcoder.jp/contests/abc324/tasks/abc324_f (binary search and dp on dag)
