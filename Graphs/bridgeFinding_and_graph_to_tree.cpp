@@ -43,7 +43,7 @@ const ll prime2=998244353;
 const ll prime3=7901;
 // problem: https://codeforces.com/contest/1986/problem/F
 // basically every undirected graph have some bridges and 
-// the structure is 
+// the structure is a tree of (bi connected componnets which are the new nodes) -> and then you do all tree algorithms :)
 const ll MOD = 998244353;
 ll INF=2e18;
 const int NAX=1e5+5;
