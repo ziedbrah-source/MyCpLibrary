@@ -12,6 +12,7 @@ const ll prime3=7901;
 const ll MOD = 998244353;
 ll INF=2e18;
 //problem: https://www.spoj.com/problems/KQUERY/
+// bro this is called mergesorttree not persistent but anyway!
 class PersistentSeg{
 	public:
 		int n;
