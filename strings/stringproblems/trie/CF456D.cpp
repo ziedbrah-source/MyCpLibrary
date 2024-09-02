@@ -9,9 +9,11 @@ ll n,q,d;
 struct vertex{
 	char alphabet;
 	bool exists;
-	vector<vertex*> child;
+	vertex* child[26];
 	vertex(char a): alphabet(a),exists(false) {
-		child.assign(26,NULL);
+		for(int i=0;i<26;i++){
+			child[i]=NULL;
+		}
 	}
 
 };

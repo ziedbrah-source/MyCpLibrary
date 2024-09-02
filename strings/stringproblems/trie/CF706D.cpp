@@ -13,11 +13,12 @@ struct vertex{
 	int alphabet;
 	bool exists;
 	int counter;
-	vector<vertex*> childs;
+	vertex* childs[2];
 	vertex(int a){
 		alphabet=a;
 		counter=0;
-		childs.assign(2,NULL);
+		for(int i=0;i<2;i++) childs[i]=NULL;
+		// if TLE do assign, faster but it takes more memory;
 	}
 };
 
