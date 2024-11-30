@@ -89,7 +89,7 @@ int id[nax];
 map<int,int> freq[nax];
 vector<int> vals(nax,0);
 void mrg(int par,int node){
-	if(freq[id[par]]<freq[id[node]]){
+	if(freq[id[par]].size()<freq[id[node]].size()){
 		swap(id[par],id[node]);
 	}
 
